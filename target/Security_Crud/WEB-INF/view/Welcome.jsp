@@ -16,7 +16,7 @@
 <hr>
 User: <security:authentication property="principal.username"/>
 <br><br>
-Your role in system: <security:authentication property="principal.authorities"/>
+Your role in system: <security:authentication property="principal.roles"/>
 <br><br>
 <hr>
 

@@ -16,7 +16,13 @@ public class UserDaoImpl implements UserDao {
     @PersistenceContext
     private EntityManager entityManager;
 
+    @Override
+    public User getUserByName(String username) {
+        User user =(User) entityManager.createQuery("from User user where user.username = :username")
+                .setParameter("username", username).getSingleResult();
 
+        return user;
+    }
 
     @Override
     public List<User> GetAllUsers() {

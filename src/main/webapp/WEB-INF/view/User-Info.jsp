@@ -18,6 +18,10 @@
     <br><br>
     Hobby <form:input path="hobby"/>
     <br><br>
+    Username <form:input path="username"/>
+    <br><br>
+    Password <form:input path="password"/>
+    <br><br>
     <input type="submit" value="OK">
     <input type="button" value="Return"
            onclick="window.location.href = '/admin/getAll'">

@@ -11,6 +11,8 @@
         <th>LastName</th>
         <th>Age</th>
         <th>Hobby</th>
+        <th>Username</th>
+        <th>Password</th>
         <th>Operations</th>
     </tr>
 
@@ -33,6 +35,8 @@
             <td>${user.lastName}</td>
             <td>${user.age}</td>
             <td>${user.hobby}</td>
+            <td>${user.username}</td>
+            <td>${user.password}</td>
             <td>
                 <input type="button" value="Update"
                        onclick="window.location.href= '${updateButton}'"/>
