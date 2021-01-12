@@ -13,25 +13,21 @@
 <h2>Hello user, welcome to home page!</h2>
 <br>
 
-<hr>
-User: <security:authentication property="principal.username"/>
-<br><br>
-Your role in system: <security:authentication property="principal.roles"/>
-<br><br>
-<hr>
-
 <security:authorize access="hasRole('ROLE_ADMIN')">
 <input type="button" value="ShowAll"
        onclick="window.location.href = '/admin/getAll'">
 <br><br>
 </security:authorize>
+
+<security:authorize access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')">
 <input type="button" value="ShowMyInfo"
        onclick="window.location.href = '/user'">
+</security:authorize>
 <hr>
+    <input type="button" value="Login"
+           onclick="window.location.href = '/login'">
 
-<header>
     <input type="button" value="Logout"
-    onclick="window.location.href = '/logout'">
-</header>
+           onclick="window.location.href = '/logout'">
 </body>
 </html>

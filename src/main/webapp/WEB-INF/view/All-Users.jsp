@@ -37,6 +37,7 @@
             <td>${user.hobby}</td>
             <td>${user.username}</td>
             <td>${user.password}</td>
+
             <td>
                 <input type="button" value="Update"
                        onclick="window.location.href= '${updateButton}'"/>
@@ -54,8 +55,6 @@
 
 <input type="button" value="Add"
        onclick="window.location.href = '/admin/addNewUser'">
-<input type="button" value="Home"
-       onclick="window.location.href = '/'">
 <br>
 
 <hr>

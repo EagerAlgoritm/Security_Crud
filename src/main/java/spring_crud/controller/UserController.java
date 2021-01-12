@@ -1,15 +1,15 @@
 package spring_crud.controller;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import spring_crud.model.User;
 import spring_crud.service.UserService;
-
-
-import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -28,9 +28,13 @@ public class UserController {
         return "Denied";
     }
 
-    @RequestMapping(value = "/user")
-    public String getUserPage(Principal user, Model model) {
-        model.addAttribute("user", user.getName());
+    @GetMapping(value = "/user")
+    public String getUserPage(Model model) {
+        UserDetails user = (UserDetails) SecurityContextHolder
+                .getContext()
+                .getAuthentication()
+                .getPrincipal();
+        model.addAttribute("user", userService.getUserByName(user.getUsername()));
         return "User";
     }
 
@@ -57,7 +61,7 @@ public class UserController {
 
         userService.saveUser(user);
 
-        return "redirect:/";
+        return "redirect:/admin/getAll";
     }
 
     @RequestMapping("/admin/updateInfo")
@@ -74,6 +78,6 @@ public class UserController {
 
         userService.deleteUser(id);
 
-        return "redirect:/";
+        return "redirect:/admin/getAll";
     }
 }
